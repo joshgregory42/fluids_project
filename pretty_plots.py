@@ -27,18 +27,19 @@ c_L_y = c_L.iloc[:, 1]
 
 # Read in the velocity magnitude data
 vel = pd.read_csv("vel_mag.csv")
-vel_x = abs_pressure.iloc[:, 2]
-vel_mag = abs_pressure.iloc[:, 3]
+vel_x = vel.iloc[:, 2]
+vel_mag = vel.iloc[:, 3]
 
 dpi_val = 1000
-'''
+
 # Plot the pressure data
-plt.scatter(pressure_x, pressure_y, color='green', marker='o')
+plt.scatter(pressure_x, pressure_y, facecolors='none', edgecolors='g')
 plt.title("Absolute Pressure, NACA 0012 Airfoil")
-plt.xlabel("Horizontal position (x)")
+plt.xlabel("Horizontal Position (x)")
 plt.ylabel("Absolute Pressure (Pa)")
 plt.savefig("abs_pressure.png", dpi=dpi_val)
-
+plt.show()
+'''
 # Plot the drag coefficient data
 plt.plot(c_d_x, c_d_y, color='red')
 plt.title("Drag Coefficient for NACA 0012 Airfoil")
@@ -55,8 +56,8 @@ plt.savefig("lift_coef.png", dpi=dpi_val)
 '''
 
 # Plot the velocity data
-plt.scatter(vel_x, vel_mag, color='red')
-plt.title("Velocity Magnitude for NACA 0012 Airfoil")
+plt.scatter(vel_x, vel_mag, facecolors='none', edgecolors='r')
+plt.title("Velocity Magnitude, NACA 0012 Airfoil")
 plt.xlabel("Horizontal Position (m)")
 plt.ylabel("Velocity (m/s)")
 plt.savefig("vel_mag_plot.png", dpi=dpi_val)
