@@ -44,4 +44,34 @@ force_bern = bernoulli_force(p_y, pressure)
 
 print("\nTotal drag force: " + str(force_bern) + " N")
 
+# Matplotlib setting to use LaTeX font for plots
+plt.rcParams.update({
+    "text.usetex": True,
+    "font.family": "serif",
+    "font.sans-serif": ["Computer Modern Roman"]})
+
+# Reading in the pressure data
+abs_pressure = pd.read_csv("abs_pressure.csv")
+
+pressure_x = abs_pressure.iloc[:, 0]
+pressure_y = abs_pressure.iloc[:, 3]
+
+dpi_val = 1000
+
+# Plot the pressure data
+plt.scatter(pressure_x, pressure_y, facecolors='none', edgecolors='g')
+plt.title("Absolute Pressure, NACA 0012 Airfoil (CFD)")
+plt.xlabel("Horizontal Position (x)")
+plt.ylabel("Absolute Pressure (Pa)")
+plt.savefig("cfd_pressure.png", dpi=dpi_val)
+plt.show()
+
+
+plt.scatter(p_x, bernoulli, facecolors='none', edgecolors='r', label="Bernoulli")
+plt.title("Absolute Pressure, NACA 0012 Airfoil (Bernoulli)")
+plt.xlabel("Horizontal Position (x)")
+plt.ylabel("Absolute Pressure (Pa)")
+plt.savefig("bern_pressure.png", dpi=dpi_val)
+plt.show()
+
 print("\nProgram executed")
